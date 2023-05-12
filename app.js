@@ -25,20 +25,20 @@ const client = new ModbusRTU();
 client.connectRTUBuffered('/dev/tty.usbserial-AB0MFUKA', {baudRate: 9600});
 client.setTimeout(1000);
 
-const metersIdList = [3];
+const metersIdList = [1,2,3];
 
 let sensor = {
-    ph: '',
-    temp: '',
-    cod: '',
-    tss: '',
-    nh3n: '',
-    rate: '',
-    level: ''
+    ph: 0.00,
+    temp: 0.00,
+    cod: 0.00,
+    tss: 0.00,
+    nh3n: 0.00,
+    rate: 0.00,
+    level: 0.00
 }
 let wind = {
-    speed: '',
-    direction: ''
+    speed: 0.00,
+    direction: 0.00
 }
 
 const getMetersValue = async (meters) => {
@@ -129,8 +129,8 @@ setInterval(() => {
             Authorization: 'Bearer 111|hVio5sSvO2ETxgZKgH5bTdAzJAKy77AWVvp4EoxU'
         }
     })
-    .then(res => {
-        console.log(res)
+    .then(() => {
+        console.log('data')
     })
     .catch(err => {
         console.log(err)
